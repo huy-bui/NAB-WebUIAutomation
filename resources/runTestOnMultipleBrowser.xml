@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Search" parallel="tests" thread-count="2">
+
+  <listeners>
+		<listener class-name="listenerConfig.ExtentListener" />
+  </listeners> 
+	
+  <test name="Run on CHROME">
+    <parameter name="browser" value="Chrome"></parameter>
+    <classes>
+      <class name="Search.Search_Weather_Test"/>
+    </classes>
+  </test> 
+  
+  <test name="Run on FIREFOX">
+    <parameter name="browser" value="Firefox"></parameter>
+    <classes>
+      <class name="Search.Search_Weather_Test"/>
+    </classes>
+  </test>  
+  
+</suite> 

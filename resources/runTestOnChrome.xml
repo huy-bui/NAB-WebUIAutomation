@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Search" parallel="false">
+
+  <listeners>
+		<listener class-name="listenerConfig.ExtentListener" />
+  </listeners> 
+	
+  <test name="Run on CHROME">
+    <parameter name="browser" value="chrome"></parameter>
+    <classes>
+      <class name="Search.Search_Weather_Test"/>
+      <class name="Search.Search_Weather_Test"/>
+    </classes>
+  </test> 
+  
+</suite> 
