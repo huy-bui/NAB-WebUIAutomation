@@ -13,15 +13,18 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import pageObjects.HomePageObject;
+
 public class BaseTest {
 
 	protected WebDriver driver;
-	public String currentDir = System.getProperty("user.dir");
+	protected HomePageObject homePage;
 
 	@BeforeTest
 	@Parameters("browser")
 	public void openBrowser(String browserName) {
-		
+
+		String currentDir = Constants.PROJECT_PATH;
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", currentDir + Constants.CHROME_DRIVER_PATH);
@@ -48,6 +51,7 @@ public class BaseTest {
 		driver.manage().window().maximize();
 		driver.get(Constants.URL);
 		driver.manage().timeouts().implicitlyWait(Constants.TIMEOUT, TimeUnit.SECONDS);
+		homePage = new HomePageObject(driver);
 	}
 
 	@AfterTest

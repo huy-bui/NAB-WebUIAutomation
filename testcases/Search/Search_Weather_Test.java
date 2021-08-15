@@ -5,13 +5,11 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import pageObjects.CityPageObject;
-import pageObjects.HomePageObject;
 import pageObjects.WeatherInYourCityPageObject;
 import utils.Helper;
 
 public class Search_Weather_Test extends BaseTest {
 
-	HomePageObject homePage;
 	WeatherInYourCityPageObject weatherInYourCityPage;
 	CityPageObject cityPage;
 
@@ -20,13 +18,10 @@ public class Search_Weather_Test extends BaseTest {
 		String city = "Ha Noi";
 		String expectedCityName = city.trim().replace(" ", "").toLowerCase();
 
-		homePage = new HomePageObject(driver);
-		homePage.inputCityNameAndSearch(city);
+		weatherInYourCityPage = homePage.inputCityNameAndSearch(city);
 
-		weatherInYourCityPage = new WeatherInYourCityPageObject(driver);
-		weatherInYourCityPage.clickToFirstCityLink();
-		
-		cityPage = new CityPageObject(driver);
+		cityPage = weatherInYourCityPage.clickToFirstCityLink();
+
 		Helper helper = Helper.initialHelper();
 		String systemCurrentDate = helper.getCurrentDate();
 

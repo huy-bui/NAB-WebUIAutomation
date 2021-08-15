@@ -2,15 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Search" parallel="false">
 
-  <listeners>
+	<listeners>
 		<listener class-name="listenerConfig.ExtentListener" />
-  </listeners> 
-	
-  <test name="Run on FIREFOX">
-    <parameter name="browser" value="firefox"></parameter>
-    <classes>
-      <class name="Search.Search_Weather_Test"/>
-    </classes>
-  </test>  
-  
+	</listeners>
+
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="firefox"></parameter>
+		<classes>
+			<class name="Search.Search_Weather_Test" />
+		</classes>
+	</test>
+
 </suite> 

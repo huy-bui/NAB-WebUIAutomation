@@ -8,7 +8,7 @@ public class Helper {
 	public static Helper initialHelper() {
 		return new Helper();
 	}
-	
+
 	// Return current date with format MMM day
 	public String getCurrentDate() {
 		Format f = new SimpleDateFormat("MMM d");

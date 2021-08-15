@@ -17,9 +17,9 @@ public class WeatherInYourCityPageObject extends BasePage {
 	@FindBy(xpath = "//div[@id=\"forecast-list\"]//a")
 	private WebElement firstCityLink;
 
-	public void clickToFirstCityLink() {
+	public CityPageObject clickToFirstCityLink() {
 		clickToElement(firstCityLink);
-//		return PageGeneratorManager.getCityPage(driver);
+		return new CityPageObject(driver);
 	}
 
 }
