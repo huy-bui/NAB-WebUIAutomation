@@ -20,11 +20,13 @@ public class BaseTest {
 
 	protected WebDriver driver;
 	protected HomePageObject homePage;
+	protected static String browser = null;
 
 	@BeforeTest
 	@Parameters("browser")
 	public void openBrowser(String browserName) {
 
+		browser = browserName;
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			ChromeOptions chromeOptions = new ChromeOptions();

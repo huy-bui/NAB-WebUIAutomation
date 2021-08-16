@@ -15,36 +15,40 @@ import reportConfig.ExtentTestManager;
 
 public class ExtentListener extends BaseTest implements ITestListener{
 	
-	public synchronized void onStart(ITestContext context) {
+	public void onStart(ITestContext context) {
 		System.out.println("=== Test Suite " + context.getName() + " starting...");
 	}
 
-	public synchronized void onFinish(ITestContext context) {
+	public void onFinish(ITestContext context) {
 		System.out.println(("=== Test Suite " + context.getName() + " end!"));
 		ExtentTestManager.endTest();
 		ExtentManager.getInstance().flush();
 	}
 
-	public synchronized void onTestStart(ITestResult result) {
-		System.out.println(("=== Test case: " + result.getMethod().getMethodName() + "running..."));
+	public void onTestStart(ITestResult result) {
+		System.out.println(("=== Test case: " + result.getMethod().getMethodName() + " running..."));
 		ExtentTestManager.startTest(result.getMethod().getMethodName());
 	}
 
-	public synchronized void onTestSuccess(ITestResult result) {
+	public void onTestSuccess(ITestResult result) {
 		
 		String methodName = result.getMethod().getMethodName();
         String logText = "<b>" + methodName.toUpperCase() + " => PASSED" + "</b>";
         Markup m = MarkupHelper.createLabel(logText, ExtentColor.GREEN);
+        Markup n = MarkupHelper.createLabel("Run on: " + browser.toUpperCase(), ExtentColor.BLUE);
         System.out.println("=== RESULT: " + result.getMethod().getMethodName() + " => PASSED");
         ExtentTestManager.getTest().log(Status.PASS, m);
+        ExtentTestManager.getTest().log(Status.PASS, n);
 	}
 
-	public synchronized void onTestFailure(ITestResult result){
+	public void onTestFailure(ITestResult result){
 		String methodName = result.getMethod().getMethodName();
         String logText = "<b>" + methodName.toUpperCase() + " => FAILED" + "</b>";
         Markup m = MarkupHelper.createLabel(logText, ExtentColor.RED);
 		System.out.println("=== RESULT: " + result.getMethod().getMethodName() + " => FAILED");
 		ExtentTestManager.getTest().log(Status.FAIL, m);
+		Markup n = MarkupHelper.createLabel("Run on: " + browser.toUpperCase(), ExtentColor.BLUE);
+		ExtentTestManager.getTest().log(Status.FAIL, n);
 		
 		String exceptionMessage = result.getThrowable().toString();
 		String failMessage = "<details>" + "<summary>" + "<b>" + "<font color=" + "red>" + "Exception Occured: Click to see"
@@ -64,16 +68,17 @@ public class ExtentListener extends BaseTest implements ITestListener{
 //		ExtentTestManager.getTest().log(Status.FAIL, image);
 	}
 
-	public synchronized void onTestSkipped(ITestResult result) {
+	public void onTestSkipped(ITestResult result) {
 		String methodName = result.getMethod().getMethodName();
         String logText = "<b>" + "Test Case:- " + methodName + " Skipped" + "</b>";
         Markup m = MarkupHelper.createLabel(logText, ExtentColor.YELLOW);
 		System.out.println("=== RESULT: " + result.getMethod().getMethodName() + " => SKIPPED");
 		ExtentTestManager.getTest().log(Status.SKIP, m);
+		Markup n = MarkupHelper.createLabel("Run on: " + browser.toUpperCase(), ExtentColor.BLUE);
+		ExtentTestManager.getTest().log(Status.SKIP, n);
 	}
 
-	public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		System.out.println("=== Test failed but within percentage % " + result.getMethod().getMethodName());
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 	}
 	
 //	public synchronized String takeScreenShot() {
