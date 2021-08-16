@@ -32,6 +32,6 @@ public class Search_Weather_Test extends BaseTest {
 		String actualCityName = cityPage.getCityName().trim().replace(" ", "").toLowerCase();
 		Assert.assertTrue(actualCityName.contains(expectedCityName), "City name is displayed incorrectly!!!");
 		Assert.assertTrue(cityPage.isTemperatureDisplayed(), "Temperature is NOT displayed!!!");
-		Assert.assertTrue(cityPage.getTemperature().contains("aaa"), "Temperature is displayed incorrectly!!!");
+		Assert.assertTrue(cityPage.getTemperature().contains("°C"), "Temperature is displayed incorrectly!!!");
 	}
 }
