@@ -28,8 +28,10 @@ READ ME
 
 ### About the framework
 - Using maven, testNG and Selenium WebDriver
-- WebDriver management using WebDriverManager library and browser options to init browser drivers
-- Test Suite organization: in folder testcases, it consists of features packages, in every package will be having many test cases inside
+- WebDriver management using WebDriverManager library
+- Test Suite organization: 
+  + In folder testcases, it consists of features packages, in every package will include test cases inside
+  + Folder resources: include test suites will be run that defined in xml files.
 - Using extentReport
 
 ### Run Tests
