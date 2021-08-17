@@ -40,5 +40,13 @@ The XML files in the resources folder allow running with:
 
 #### How to run tests
 1. We can run XML file directly in Eclipse IDE - run with testNG
-2. Or we can run test with commands below:
+2. Or we can run test with commands as following steps:
+- Open terminal, cd to project location: cd <project_path>
+- mvn install 
+- mvn test -Dsuite=<xml_suite_path>
+
+For e.g: mvn test -Dsuite=resources/runTestOnMultipleBrowserParallel.xml
+
+### Report
+Using Extent Report, the results of every running in TestReports folder
 
